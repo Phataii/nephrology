@@ -779,6 +779,78 @@
                 font-size: 0.9rem;
             }
         }
+         /* Mobile Responsive Styles */
+        @media (max-width: 992px) {
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .tabs {
+                overflow-x: auto;
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                padding-bottom: 5px;
+            }
+            
+            .tab-btn {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .disease-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .disease-image {
+                height: 180px;
+            }
+            
+            .tab-btn {
+                padding: 0.7rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .disease-content {
+                padding: 1rem;
+            }
+            
+            .disease-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .tab-btn {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1266,7 +1338,7 @@
                 <h3>Donate as low as</h3>
                 <div class="amount">₦500</div>
                 <p>Every donation counts, any amount will go a long way in saving a life</p>
-                <button class="btn donate-btn" data-amount="5000">Donate Now</button>
+                <button class="btn donate-btn" data-amount="500000">Donate Now</button>
             </div>
         <!-- <div style="margin-top: 3rem;">
             <h3>Our Funding Progress</h3>
