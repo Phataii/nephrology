@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Hospital Abuja - Nephrology Unit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a7da1;
+            --secondary: #34b3c7;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --nh-green: #006400;
+            --nh-gold: #FFD700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+       header {
+            background: linear-gradient(135deg, var(--nh-green), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1001;
+        }
+        
+        .logo img {
+            height: 60px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .logo-sub {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Desktop Navigation */
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .desktop-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .desktop-nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 1001;
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            inset: 0;
+            background: var(--nh-green);
+            z-index: 999;
+            padding: 6rem 2rem 2rem;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-out;
+            overflow-y: auto;
+        }
+        
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+        }
+        
+        .mobile-nav li {
+            margin-bottom: 1rem;
+        }
+        
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-nav a:hover {
+            color: var(--nh-gold);
+        }
+        
+        
+        .hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1559757175-053139280de2?q=80&w=2831&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            background: #c0392b;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .about-kidney {
+            background: white;
+        }
+        
+        .kidney-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .kidney-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .kidney-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .kidney-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .kidney-functions {
+            margin-top: 2rem;
+        }
+        
+        .function-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .function-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .diseases {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+        }
+        
+        .disease-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .disease-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .disease-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .disease-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .disease-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .disease-card:hover .disease-image img {
+            transform: scale(1.1);
+        }
+        
+        .disease-content {
+            padding: 1.5rem;
+        }
+        
+        .disease-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .prevention {
+            background: white;
+        }
+        
+        .prevention-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .prevention-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .prevention-card:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .prevention-card:hover i {
+            color: white;
+        }
+        
+        .prevention-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .team {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .team-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-details {
+            padding: 1.5rem;
+        }
+        
+        .team-details h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-details .role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .donation {
+            background: white;
+            text-align: center;
+        }
+        
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .donation-option {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .donation-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .donation-option h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .donation-option .amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--success);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        .contact {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-detail i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: var(--nh-gold);
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-section ul>li>a {
+          text-decoration: none;
+          color: white;
+        }
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .socials {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .socials a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .counter {
+            background: linear-gradient(135deg, var(--nh-green), var(--primary));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .counter-item {
+            padding: 1.5rem;
+        }
+        
+        .counter-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .counter-text {
+            font-size: 1.2rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: modalFade 0.3s ease;
+        }
+        
+        @keyframes modalFade {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @media (max-width: 992px) {
+            .kidney-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Media Queries for Responsive Design */
+        @media (max-width: 992px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo-main {
+                font-size: 1.2rem;
+            }
+            
+            .logo img {
+                height: 50px;
+            }
+            
+            .hero {
+                padding: 8rem 0 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+     <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMwMDY0MDAiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0iI0ZGRkZGRiIvPjxjaXJjbGUgY3g9IjM1IiBjeT0iNTAiIHI9IjE1IiBmaWxsPSIjMUE3REExIi8+PGNpcmNsZSBjeD0iNjUiIGN5PSI1MCIgcj0iMTUiIGZpbGw9IiMxQTdEQTEiLz48cGF0aCBkPSJNMzUgNjVBNSA1IDAgMCAwIDQwIDYwSDYwQTUgNSAwIDAgMCA2NSA2NUw2MCA3MEg0MEwzNSA2NVoiIGZpbGw9IiNGRkQ3MDAiLz48L3N2Zz4=" alt="National Hospital Abuja Logo">
+                    <div class="logo-text">
+                        <div class="logo-main">National Hospital Abuja</div>
+                        <div class="logo-sub">Nephrology Unit</div>
+                    </div>
+                </div>
+                
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Kidneys</a></li>
+                        <li><a href="#diseases">Diseases</a></li>
+                        <li><a href="#prevention">Prevention</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#donation">Donate</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="mobile-nav" id="mobile-nav">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Kidneys</a></li>
+                        <li><a href="#diseases">Diseases</a></li>
+                        <li><a href="#prevention">Prevention</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#donation">Donate</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Excellence in Kidney Care</h1>
+            <p>The Nephrology Unit at National Hospital Abuja provides comprehensive kidney disease prevention, treatment, and management</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                <a href="#contact" class="btn">Request Consultation</a>
+                <a href="#donation" class="btn btn-outline">Make a Donation</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="counter">
+        <div class="container">
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <div class="counter-number" id="patientCount">0</div>
+                    <div class="counter-text">Patients Treated Annually</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="dialysisCount">0</div>
+                    <div class="counter-text">Dialysis Sessions Monthly</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="transplantCount">0</div>
+                    <div class="counter-text">Transplants Performed</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="researchCount">0</div>
+                    <div class="counter-text">Research Studies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-kidney" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Understanding Your Kidneys</h2>
+                <p>Vital organs that perform essential functions to keep you healthy</p>
+            </div>
+            <div class="kidney-info">
+                <div class="kidney-image">
+                    <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Healthy Kidney Diagram">
+                </div>
+                <div class="kidney-details">
+                    <h3>What Are Kidneys?</h3>
+                    <p>The kidneys are two bean-shaped organs, each about the size of a fist. They are located just below the rib cage, one on each side of your spine. Every day, your kidneys filter about 120 to 150 quarts of blood to produce about 1 to 2 quarts of urine, composed of wastes and extra fluid.</p>
+                    
+                    <div class="kidney-functions">
+                        <h3>Key Functions of Kidneys</h3>
+                        <div class="function-item">
+                            <div class="function-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div>
+                                <h4>Waste Filtration</h4>
+                                <p>Remove waste products and excess fluids from your body through urine</p>
+                            </div>
+                        </div>
+                        <div class="function-item">
+                            <div class="function-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div>
+                                <h4>Electrolyte Balance</h4>
+                                <p>Maintain a stable balance of body electrolytes like sodium, potassium, and phosphate</p>
+                            </div>
+                        </div>
+                        <div class="function-item">
+                            <div class="function-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div>
+                                <h4>Blood Pressure Regulation</h4>
+                                <p>Produce hormones that regulate blood pressure and red blood cell production</p>
+                            </div>
+                        </div>
+                        <div class="function-item">
+                            <div class="function-icon">
+                                <i class="fas fa-bone"></i>
+                            </div>
+                            <div>
+                                <h4>Bone Health</h4>
+                                <p>Activate vitamin D to maintain strong bones and healthy chemical balance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="diseases" id="diseases">
+        <div class="container">
+            <div class="section-title">
+                <h2>Common Kidney Diseases</h2>
+                <p>Understanding kidney conditions and their treatments</p>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="ckd">Chronic Kidney Disease</button>
+                <button class="tab-btn" data-tab="stones">Kidney Stones</button>
+                <button class="tab-btn" data-tab="infection">Infections</button>
+                <button class="tab-btn" data-tab="cancer">Kidney Cancer</button>
+            </div>
+            
+            <div class="tab-content active" id="ckd">
+                <div class="disease-grid">
+                    <div class="disease-card">
+                        <div class="disease-image">
+                            <img src="https://images.unsplash.com/photo-1715527498459-22c8534b6b49?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGtpZG5leSUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D" alt="Chronic Kidney Disease">
+                        </div>
+                        <div class="disease-content">
+                            <h3>Chronic Kidney Disease (CKD)</h3>
+                            <p>CKD is a progressive loss of kidney function over months or years. Early detection can help prevent progression to kidney failure.</p>
+                            <h4>Symptoms:</h4>
+                            <ul>
+                                <li>Fatigue and weakness</li>
+                                <li>Swelling in hands and feet</li>
+                                <li>Shortness of breath</li>
+                                <li>Persistent itching</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="disease-card">
+                        <div class="disease-image">
+                            <img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dialysis Treatment">
+                        </div>
+                        <div class="disease-content">
+                            <h3>Treatment Options</h3>
+                            <p>Our comprehensive approach to CKD management includes medication, lifestyle changes, and advanced renal replacement therapies.</p>
+                            <h4>Our Services:</h4>
+                            <ul>
+                                <li>Medication management</li>
+                                <li>Dietary planning</li>
+                                <li>Dialysis services</li>
+                                <li>Transplantation evaluation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="stones">
+                <div class="disease-grid">
+                    <div class="disease-card">
+                        <div class="disease-image">
+                            <img src="https://images.unsplash.com/photo-1559757175-053139280de2?q=80&w=2831&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kidney Stones">
+                        </div>
+                        <div class="disease-content">
+                            <h3>Kidney Stones</h3>
+                            <p>Hard deposits of minerals and salts that form inside your kidneys. They can be extremely painful when passing through the urinary tract.</p>
+                            <h4>Symptoms:</h4>
+                            <ul>
+                                <li>Severe pain in side and back</li>
+                                <li>Pain that radiates to lower abdomen</li>
+                                <li>Painful urination</li>
+                                <li>Pink, red or brown urine</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="disease-card">
+                        <div class="disease-image">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Stone Treatment">
+                        </div>
+                        <div class="disease-content">
+                            <h3>Treatment & Prevention</h3>
+                            <p>We offer advanced diagnostic and treatment options for kidney stones, including minimally invasive procedures.</p>
+                            <h4>Our Approach:</h4>
+                            <ul>
+                                <li>Shock wave lithotripsy</li>
+                                <li>Ureteroscopy</li>
+                                <li>Percutaneous nephrolithotomy</li>
+                                <li>Dietary counseling for prevention</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="infection">
+    <div class="disease-grid">
+        <div class="disease-card">
+            <div class="disease-image">
+                <img src="https://images.unsplash.com/photo-1584302170542-8136a2dc6d69?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kidney Infection">
+            </div>
+            <div class="disease-content">
+                <h3>Kidney Infections (Pyelonephritis)</h3>
+                <p>A type of urinary tract infection that generally begins in your urethra or bladder and travels to one or both kidneys. Prompt medical attention is needed to prevent permanent damage.</p>
+                <h4>Symptoms:</h4>
+                <ul>
+                    <li>Fever and chills</li>
+                    <li>Back, side or groin pain</li>
+                    <li>Abdominal pain</li>
+                    <li>Frequent, painful urination</li>
+                    <li>Cloudy, dark, or bloody urine</li>
+                    <li>Nausea and vomiting</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="disease-card">
+            <div class="disease-image">
+                <img src="https://images.unsplash.com/photo-1576091160558-18c8dee8320a?q=80&w=2840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Infection Treatment">
+            </div>
+            <div class="disease-content">
+                <h3>Treatment & Prevention</h3>
+                <p>We provide comprehensive care for kidney infections, from accurate diagnosis to effective treatment plans tailored to each patient's needs.</p>
+                <h4>Our Approach:</h4>
+                <ul>
+                    <li>Antibiotic therapy tailored to infection type</li>
+                    <li>Hospitalization for severe cases with IV antibiotics</li>
+                    <li>Pain management strategies</li>
+                    <li>Follow-up care to prevent recurrence</li>
+                    <li>Education on urinary tract health</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+          </div>
+
+          <div class="tab-content" id="cancer">
+              <div class="disease-grid">
+                  <div class="disease-card">
+                      <div class="disease-image">
+                          <img src="https://images.unsplash.com/photo-1559757175-0cd86184d3f9?q=80&w=2831&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kidney Cancer">
+                      </div>
+                      <div class="disease-content">
+                          <h3>Kidney Cancer</h3>
+                          <p>Kidney cancer begins when healthy cells in one or both kidneys change and grow out of control, forming a mass called a tumor. Early detection significantly improves treatment outcomes.</p>
+                          <h4>Symptoms:</h4>
+                          <ul>
+                              <li>Blood in urine (hematuria)</li>
+                              <li>Persistent pain in side or lower back</li>
+                              <li>Lump or mass in side or abdomen</li>
+                              <li>Unexplained weight loss</li>
+                              <li>Fatigue and loss of appetite</li>
+                              <li>Fever that comes and goes</li>
+                          </ul>
+                      </div>
+                  </div>
+                  
+                  <div class="disease-card">
+                      <div class="disease-image">
+                          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cancer Treatment">
+                      </div>
+                      <div class="disease-content">
+                          <h3>Treatment Options</h3>
+                          <p>Our multidisciplinary team provides personalized treatment plans for kidney cancer using the latest evidence-based approaches and technologies.</p>
+                          <h4>Our Services:</h4>
+                          <ul>
+                              <li>Surgical options (partial or radical nephrectomy)</li>
+                              <li>Minimally invasive procedures (cryoablation, radiofrequency ablation)</li>
+                              <li>Targeted therapy and immunotherapy</li>
+                              <li>Radiation therapy for advanced cases</li>
+                              <li>Clinical trials for innovative treatments</li>
+                              <li>Comprehensive survivorship care</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="prevention" id="prevention">
+        <div class="container">
+            <div class="section-title">
+                <h2>Prevention & Healthy Habits</h2>
+                <p>Protecting your kidney health through lifestyle choices</p>
+            </div>
+            
+            <div class="prevention-grid">
+                <div class="prevention-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Stay Hydrated</h3>
+                    <p>Drinking plenty of water helps your kidneys clear sodium, urea, and toxins from the body</p>
+                </div>
+                
+                <div class="prevention-card">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>Eat Healthy</h3>
+                    <p>A balanced diet low in salt and processed foods reduces kidney strain and prevents damage</p>
+                </div>
+                
+                <div class="prevention-card">
+                    <i class="fas fa-walking"></i>
+                    <h3>Exercise Regularly</h3>
+                    <p>Physical activity helps maintain healthy blood pressure and reduces diabetes risk</p>
+                </div>
+                
+                <div class="prevention-card">
+                    <i class="fas fa-prescription-bottle"></i>
+                    <h3>Monitor Medications</h3>
+                    <p>Avoid excessive use of NSAIDs and always follow dosage instructions</p>
+                </div>
+                
+                <div class="prevention-card">
+                    <i class="fas fa-smoking"></i>
+                    <h3>Avoid Smoking</h3>
+                    <p>Smoking reduces blood flow to the kidneys and increases cancer risk</p>
+                </div>
+                
+                <div class="prevention-card">
+                    <i class="fas fa-stethoscope"></i>
+                    <h3>Regular Check-ups</h3>
+                    <p>Annual screenings are crucial if you have diabetes, hypertension, or family history</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Specialist Team</h2>
+                <p>Experienced nephrologists and support staff dedicated to your kidney health</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://cdn.pixabay.com/photo/2016/03/31/20/12/doctor-1295581_1280.png" alt="Dr. Adebayo">
+                    </div>
+                    <div class="team-details">
+                        <h3>Dr. Abdulshahid Sarki</h3>
+                        <div class="role">Consultant Physician/Nephrology</div>
+                        <p>MBBS, FWACP</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://cdn.pixabay.com/photo/2016/03/31/20/12/doctor-1295581_1280.png" alt="Dr. Ibrahim">
+                    </div>
+                    <div class="team-details">
+                        <h3>Dr. Galadance</h3>
+                        <div class="role">Consultant Physician/Nephrology</div>
+                        <p>MBBS, FWACP</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://cdn.pixabay.com/photo/2016/03/31/20/12/doctor-1295581_1280.png" alt="Dr. Okon">
+                    </div>
+                    <div class="team-details">
+                        <h3>Dr. Maji</h3>
+                        <div class="role">Senior Registrar Nephrology</div>
+                        <p>MBBS, FWACP</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://cdn.pixabay.com/photo/2016/03/31/20/12/doctor-1295581_1280.png" alt="Nurse Adeola">
+                    </div>
+                    <div class="team-details">
+                        <h3>Dr. Abdullahi</h3>
+                        <div class="role">Senior Registrar Nephrology</div>
+                        <p>MBBS, FWACP</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://cdn.pixabay.com/photo/2016/03/31/20/12/doctor-1295581_1280.png" alt="Nurse Adeola">
+                    </div>
+                    <div class="team-details">
+                        <h3>Dr. Essang</h3>
+                        <div class="role">Dialysis Specialist</div>
+                        <p>MBBS, FWACP</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://cdn.pixabay.com/photo/2016/03/31/20/12/doctor-1295581_1280.png" alt="Nurse Adeola">
+                    </div>
+                    <div class="team-details">
+                        <h3>Dr. Hadiza</h3>
+                        <div class="role">Senior Registrar Nephrology</div>
+                        <p>MBBS, FWACP</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://cdn.pixabay.com/photo/2016/03/31/20/12/doctor-1295581_1280.png" alt="Nurse Adeola">
+                    </div>
+                    <div class="team-details">
+                        <h3>Mrs. NAME</h3>
+                        <div class="role">Matron, Dialysis Unit</div>
+                        <p>RN, BNSC</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="donation" id="donation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Support Our Mission</h2>
+                <p>Your donation helps us provide life-saving treatments and advance kidney health research</p>
+            </div>
+            
+            <div class="donation-options">
+                <div class="donation-option">
+                    <h3>Dialysis Support</h3>
+                    <div class="amount">₦25,000</div>
+                    <p>Sponsor dialysis treatment for one patient in need</p>
+                    <button class="btn donate-btn" data-amount="25000">Donate Now</button>
+                </div>
+                
+                <div class="donation-option">
+                    <h3>Medication Fund</h3>
+                    <div class="amount">₦50,000</div>
+                    <p>Provide essential medications for patients who can't afford them</p>
+                    <button class="btn donate-btn" data-amount="50000">Donate Now</button>
+                </div>            <div class="donation-option">
+                <h3>Equipment Fund</h3>
+                <div class="amount">₦100,000</div>
+                <p>Help us maintain and upgrade our dialysis machines</p>
+                <button class="btn donate-btn" data-amount="100000">Donate Now</button>
+            </div>
+            
+            <div class="donation-option">
+                <h3>Transplant Support</h3>
+                <div class="amount">₦500,000</div>
+                <p>Contribute towards life-changing kidney transplant surgeries</p>
+                <button class="btn donate-btn" data-amount="500000">Donate Now</button>
+            </div>
+
+           
+        </div>
+         <div class="donation-option">
+                <h3>Donate as low as</h3>
+                <div class="amount">₦500</div>
+                <p>Every donation counts, any amount will go a long way in saving a life</p>
+                <button class="btn donate-btn" data-amount="5000">Donate Now</button>
+            </div>
+        <!-- <div style="margin-top: 3rem;">
+            <h3>Our Funding Progress</h3>
+            <div class="progress-bar">
+                <div class="progress" id="donation-progress"></div>
+            </div>
+            <p>Our goal: ₦10,000,000 | Raised: <span id="raised-amount">₦4,250,000</span></p>
+        </div> -->
+        
+        <div style="margin-top: 3rem; background: #f8f9fa; padding: 2rem; border-radius: 10px;">
+            <h3>Other Ways to Support</h3>
+            <p>You can also support us through:</p>
+            <ul style="list-style: none; margin-top: 1rem;">
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-hand-holding-heart" style="color: var(--accent); margin-right: 10px;"></i> Corporate partnerships and sponsorships</li>
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-users" style="color: var(--accent); margin-right: 10px;"></i> Organizing fundraising events</li>
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-gift" style="color: var(--accent); margin-right: 10px;"></i> In-kind donations of medical supplies</li>
+                <li><i class="fas fa-hands-helping" style="color: var(--accent); margin-right: 10px;"></i> Volunteering your time and expertise</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Reach out for appointments, inquiries, or support</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                
+                <div class="contact-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Address</h4>
+                        <p>Nephrology Unit, National Hospital Abuja<br>Plot 132 Central District, Garki<br>Abuja, Nigeria</p>
+                    </div>
+                </div>
+                
+                <div class="contact-detail">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+234 9 460 1000<br>+234 803 123 4567 (Emergency)</p>
+                    </div>
+                </div>
+                
+                <div class="contact-detail">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>nephrology@nationalhospitalabuja.gov.ng<br>support@kidneycareng.org</p>
+                    </div>
+                </div>
+                
+                <div class="contact-detail">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Hours</h4>
+                        <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM<br>Emergency services available 24/7</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form id="help-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" required>
+                            <option value="">Select a reason</option>
+                            <option value="appointment">Appointment Request</option>
+                            <option value="consultation">Consultation</option>
+                            <option value="donation">Donation Inquiry</option>
+                            <option value="support">Patient Support</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>National Hospital Abuja</h3>
+                <p>Providing excellence in healthcare, research, and medical education. The Nephrology Unit is dedicated to combating kidney disease through comprehensive care and innovative treatments.</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Kidneys</a></li>
+                    <li><a href="#diseases">Kidney Diseases</a></li>
+                    <li><a href="#prevention">Prevention</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#donation">Donate</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Kidney Health Tips</a></li>
+                    <li><a href="#">Nutrition Guide</a></li>
+                    <li><a href="#">Patient Stories</a></li>
+                    <li><a href="#">Research Publications</a></li>
+                    <li><a href="#">Events & Workshops</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Emergency Contacts</h3>
+                <p>For kidney-related emergencies, please contact:</p>
+                <p><strong>+234 803 123 4567</strong></p>
+                <p>Available 24/7</p>
+                <p>Emergency dialysis services available</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 National Hospital Abuja - Nephrology Unit. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<div class="modal" id="donation-modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Thank You for Your Donation!</h2>
+        <p>Your generous contribution of ₦<span id="donation-amount">0</span> will help us provide life-saving treatments and support to kidney patients.</p>
+        <p>You will be redirected to our secure payment portal.</p>
+        <button class="btn" id="confirm-donation">Continue to Payment</button>
+    </div>
+</div>
+
+<script>
+    // Animated counters
+    function animateCounter(id, target, duration) {
+        let element = document.getElementById(id);
+        let start = 0;
+        let increment = target / duration;
+        let current = 0;
+        
+        let timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                clearInterval(timer);
+                current = target;
+            }
+            element.textContent = Math.floor(current).toLocaleString();
+        }, 20);
+    }
+    
+    // Show counters when scrolled into view
+    let countersAnimated = false;
+    
+    function checkCounters() {
+        const counterSection = document.querySelector('.counter');
+        const sectionPos = counterSection.getBoundingClientRect();
+        
+        if (sectionPos.top < window.innerHeight && !countersAnimated) {
+            animateCounter('patientCount', 1850, 100);
+            animateCounter('dialysisCount', 420, 100);
+            animateCounter('transplantCount', 75, 100);
+            animateCounter('researchCount', 12, 100);
+            countersAnimated = true;
+        }
+    }
+    
+    // Donation progress
+    function updateProgress() {
+        const progressBar = document.getElementById('donation-progress');
+        progressBar.style.width = '42.5%';
+    }
+    
+    // Modal functionality
+    const modal = document.getElementById('donation-modal');
+    const donateButtons = document.querySelectorAll('.donate-btn');
+    const closeModal = document.querySelector('.close-modal');
+    const donationAmount = document.getElementById('donation-amount');
+    const confirmDonation = document.getElementById('confirm-donation');
+    
+    donateButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const amount = button.getAttribute('data-amount');
+            donationAmount.textContent = parseInt(amount).toLocaleString();
+            modal.style.display = 'flex';
+        });
+    });
+    
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+    
+    confirmDonation.addEventListener('click', () => {
+        alert('Redirecting to secure payment portal...');
+        modal.style.display = 'none';
+    });
+    
+    // Form submission
+    const helpForm = document.getElementById('help-form');
+    
+    helpForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you for your message. We will get back to you soon!');
+        helpForm.reset();
+    });
+    
+    // Tab functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons and contents
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            // Show corresponding content
+            const tabId = btn.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+    
+    // Initialize on load
+    window.addEventListener('load', () => {
+        updateProgress();
+        checkCounters();
+    });
+    
+    window.addEventListener('scroll', checkCounters);
+</script>
+<script>
+        // Mobile navigation functionality
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+        const body = document.body;
+        
+        mobileNavToggle.addEventListener('click', () => {
+            const visibility = mobileNav.getAttribute('data-visible');
+            
+            if (visibility === "false") {
+                mobileNav.setAttribute('data-visible', "true");
+                mobileNav.classList.add('active');
+                mobileNavToggle.innerHTML = '<i class="fas fa-times"></i>';
+                body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            } else {
+                mobileNav.setAttribute('data-visible', "false");
+                mobileNav.classList.remove('active');
+                mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+        });
+        
+        // Close mobile menu when clicking on links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.setAttribute('data-visible', "false");
+                mobileNav.classList.remove('active');
+                mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                body.style.overflow = 'auto';
+            });
+        });
+        
+        // Initialize mobile nav attribute
+        window.addEventListener('load', () => {
+            mobileNav.setAttribute('data-visible', "false");
+        });
+    </script>
+</body> </html>
